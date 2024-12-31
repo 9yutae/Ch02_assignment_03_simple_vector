@@ -58,7 +58,9 @@ SimpleVector<T>::SimpleVector(int capacity) : currentSize(0), currentCapacity(ca
 // Copy Constructor
 template <typename T>
 SimpleVector<T>::SimpleVector(const SimpleVector& other) noexcept
-	: data(new T[other.currentCapacity]), currentSize(other.currentSize), currentCapacity(other.currentCapacity) {
+	: data(new T[other.currentCapacity]),
+	currentSize(other.currentSize),
+	currentCapacity(other.currentCapacity) {
 	copy(other.data, other.data + currentSize, data);
 	cout << "Vector Successfully Copied" << endl;
 }
@@ -99,9 +101,13 @@ void SimpleVector<T>::sortData() {
 template <typename T>
 void SimpleVector<T>::resize(int newCapacity) {
 	if (newCapacity > currentCapacity) {
+		T* newVector = new T[newCapacity];
+		std::copy(data, data + currentSize, newVector);
+
+		delete[] data;
+
+		data = newVector;
 		currentCapacity = newCapacity;
-		SimpleVector<T> tmp(*this);
-		swap(data, tmp.data);
 	}
 
 	cout << "[Resize] currentSize : " << currentSize << ", currentCapacity : " << currentCapacity << endl;
