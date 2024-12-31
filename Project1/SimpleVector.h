@@ -1,7 +1,6 @@
-
 #pragma once
 
-// #define DEBUG
+#define DEBUG
 
 #include <iostream>
 #include <algorithm>
@@ -53,7 +52,7 @@ SimpleVector<T>::SimpleVector() : currentSize(0), currentCapacity(10) {
 template <typename T>
 SimpleVector<T>::SimpleVector(int capacity) : currentSize(0), currentCapacity(capacity) {
 	data = new T[currentCapacity];
-	cout << "Created SimpleVector!" << endl;
+	cout << "Created SimpleVector! Capacity of Vector is " << currentCapacity << endl;
 }
 
 // Copy Constructor
@@ -61,6 +60,7 @@ template <typename T>
 SimpleVector<T>::SimpleVector(const SimpleVector& other) noexcept
 	: data(new T[other.currentCapacity]), currentSize(other.currentSize), currentCapacity(other.currentCapacity) {
 	copy(other.data, other.data + currentSize, data);
+	cout << "Vector Successfully Copied" << endl;
 }
 
 // Destructor
@@ -92,7 +92,7 @@ void SimpleVector<T>::pop_back() {
 template <typename T>
 void SimpleVector<T>::sortData() {
 	sort(data, data + currentSize);
-	cout << "\nSort completed!" << endl;
+	cout << "Sort completed!" << endl;
 }
 
 // resize()
@@ -104,7 +104,7 @@ void SimpleVector<T>::resize(int newCapacity) {
 		swap(data, tmp.data);
 	}
 
-	cout << "currentSize : " << currentSize << ", currentCapacity : " << currentCapacity << endl;
+	cout << "[Resize] currentSize : " << currentSize << ", currentCapacity : " << currentCapacity << endl;
 }
 
 #ifdef DEBUG

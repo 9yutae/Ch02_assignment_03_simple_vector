@@ -1,6 +1,8 @@
 #include "SimpleVector.h"
-#include <iostream>
-#include <string>
+// #define DEBUG_02
+
+template <typename T>
+void printVector(SimpleVector<T>& vec);
 
 int main() {
 	SimpleVector<int> vec;
@@ -15,43 +17,61 @@ int main() {
 	cout << "Size: " << str.size() << ", Capacity: " << str.capacity() << endl;
 
 #ifdef DEBUG
-	cout << "Input 10 numbers seperated by space : ";
 
-	for (int i = 0, num;i < 10;i++) {
+	int _size;
+	cout << "\nEnter the size of Vector: ";
+	cin >> _size;
+	vec.resize(_size);
+
+	cout << "\nEnter " << _size << " numbers sepertated by space: ";
+	for (int i = 0, num;i < _size;i++) {
 		cin >> num;
 		vec.push_back(num);
 	}
 
-	cout << "\After push_back()" << endl;
-	for (int i = 0;i < vec.size();i++) {
-		cout << i + 1 << ": " << vec[i] << "\t";
+	cout << "\nAfter push_back()" << endl;
+	printVector(vec);
+
+#ifdef DEBUG_02
+	cout << "\nEnter " << _size << " numbers sepertated by space: ";
+	for (int i = 0, num;i < _size;i++) {
+		cin >> num;
+		vec.push_back(num);
 	}
+#endif
+
+	cout << "\nAfter push_back()" << endl;
+	printVector(vec);
 
 	vec.sortData();
 	cout << "After sortData()" << endl;
-	for (int i = 0;i < vec.size();i++) {
-		cout << i + 1 << ": " << vec[i] << "\t";
-	}
+	printVector(vec);
 
 	vec.pop_back();
-	cout << "\n\nAfter pop_back()" << endl;
-	cout << "Size: " << vec.size() << ", Capacity: " << vec.capacity() << endl;
+	cout << "After pop_back()" << endl;
+	printVector(vec);
 
-	for (int i = 0;i < vec.size();i++) {
-		cout << i + 1 << ": " << vec[i] << "\t";
-	}
-
-
-	cout << "\n\n";
-
-	for (int i = 0;i < 10;i++) {
-		cout << i << " pop_back()" << endl;
+#ifdef DEBUG_02
+	for (int i = 0;i < _size;i++) {
 		vec.pop_back();
 	}
+#endif
 
-	cout << "Size: " << vec.size() << ", Capacity: " << vec.capacity() << endl;
+	for (int i = 0;i <= _size;i++) {
+		vec.pop_back();
+	}
+	cout << "After pop_back()" << endl;
+	cout << "Size: " << vec.size() << ", Capacity: " << vec.capacity() << "\n\n";
 
 #endif
 
 	return 0;
+}
+
+template <typename T>
+void printVector(SimpleVector<T>& vec) {
+	for (int i = 0;i < vec.size();i++) {
+		cout << i + 1 << ": " << vec[i] << "\t";
+	}
+	cout << "\nSize: " << vec.size() << ", Capacity: " << vec.capacity() << "\n\n";
 }
