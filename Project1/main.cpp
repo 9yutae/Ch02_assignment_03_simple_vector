@@ -38,10 +38,10 @@ int main() {
 		cin >> num;
 		vec.push_back(num);
 	}
-#endif
 
 	cout << "\nAfter push_back()" << endl;
 	printVector(vec);
+#endif
 
 	vec.sortData();
 	cout << "After sortData()" << endl;
