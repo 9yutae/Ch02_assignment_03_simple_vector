@@ -1,4 +1,5 @@
 #include "SimpleVector.h"
+#include <iostream>
 #include <string>
 
 int main() {
@@ -21,7 +22,13 @@ int main() {
 		vec.push_back(num);
 	}
 
-	cout << "\nAfter push_back()" << endl;
+	cout << "\After push_back()" << endl;
+	for (int i = 0;i < vec.size();i++) {
+		cout << i + 1 << ": " << vec[i] << "\t";
+	}
+
+	vec.sortData();
+	cout << "After sortData()" << endl;
 	for (int i = 0;i < vec.size();i++) {
 		cout << i + 1 << ": " << vec[i] << "\t";
 	}
