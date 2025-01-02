@@ -16,6 +16,12 @@ int main() {
 
 	cout << "Size: " << str.size() << ", Capacity: " << str.capacity() << endl;
 
+	SimpleVector<string> str1(str);
+	str1.push_back("Hello,");
+	str1.push_back("World!");
+
+	cout << "Size: " << str.size() << ", Capacity: " << str.capacity() << endl;
+
 #ifdef DEBUG
 
 	int _size;
