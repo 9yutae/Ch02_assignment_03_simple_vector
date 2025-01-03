@@ -38,8 +38,6 @@ public:
 
 };
 
-
-
 // Code Implement
 // Default Constructor
 template <typename T>
@@ -58,9 +56,9 @@ SimpleVector<T>::SimpleVector(int capacity) : currentSize(0), currentCapacity(ca
 // Copy Constructor
 template <typename T>
 SimpleVector<T>::SimpleVector(const SimpleVector& other) noexcept
-	: data(new T[other.currentCapacity]),
-	currentSize(other.currentSize),
-	currentCapacity(other.currentCapacity) {
+		:data(new T[other.currentCapacity]),
+		currentSize(other.currentSize),
+		currentCapacity(other.currentCapacity) {
 	copy(other.data, other.data + currentSize, data);
 	cout << "Vector Successfully Copied" << endl;
 }

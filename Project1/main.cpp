@@ -7,20 +7,17 @@ void printVector(SimpleVector<T>& vec);
 int main() {
 	SimpleVector<int> vec;
 	vec.push_back(10);
-
-	cout << "Size: " << vec.size() << ", Capacity: " << vec.capacity() << endl;
+	printVector(vec);
 
 	SimpleVector<string> str;
 	str.push_back("Hello,");
 	str.push_back("World!");
-
-	cout << "Size: " << str.size() << ", Capacity: " << str.capacity() << endl;
+	printVector(str);
 
 	SimpleVector<string> str1(str);
 	str1.push_back("Hello,");
 	str1.push_back("World!");
-
-	cout << "Size: " << str.size() << ", Capacity: " << str.capacity() << endl;
+	printVector(str1);
 
 #ifdef DEBUG
 
@@ -63,6 +60,7 @@ int main() {
 	}
 #endif
 
+	cout << "Delete all elements of vector." << endl;
 	for (int i = 0;i <= _size;i++) {
 		vec.pop_back();
 	}
